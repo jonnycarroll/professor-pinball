@@ -17,7 +17,7 @@ func _ready():
 
 # Randomize the jagged segments of the lightning bolt.
 func _process(delta):
-	point_array = PoolVector2Array()
+	point_array = PackedVector2Array()
 	var prior_point = Vector2(0, 0)
 	var point
 	for point_index in range(1, 10):
@@ -25,7 +25,7 @@ func _process(delta):
 		point = POINT_STEP.rotated(base_rotation + rng.randf_range(0.0, 0.2)) * point_index
 		point_array.push_back(point)
 		prior_point = point
-	update()
+	queue_redraw()
 
 # Draw the lightning bolt.
 func _draw():

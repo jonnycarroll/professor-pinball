@@ -23,16 +23,16 @@ func _process(delta):
 func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
 	if velocity.length() > CLAMP_VELOCITY:
-		state.set_linear_velocity(velocity.clamped(CLAMP_VELOCITY))
+		state.set_linear_velocity(velocity.limit_length(CLAMP_VELOCITY))
 
 	"""
 	If you're testing a table and you need to put the ball in a specific 
 	place, uncomment this code and set the origin/velocity appropriately. 
 	Then, during play, just hold Q to put the ball where you want it.
+	"""
 	if Input.is_key_pressed(KEY_Q):
 		var where = state.get_transform()
 		where.origin = Vector2(220, 1000)
 		state.set_transform(where)
 		state.set_linear_velocity(Vector2(0, -2000))
-	"""
 	

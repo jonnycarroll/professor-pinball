@@ -21,14 +21,14 @@ func setup(new_color, high_impact = false):
 	if high_impact:
 		set_amount(128)
 		set_lifetime(1.0)
-		set_param(ParticlesMaterial.PARAM_HUE_VARIATION, 1.0)
-		set_param_randomness(ParticlesMaterial.PARAM_HUE_VARIATION, 1.0)
+		set_param_max(CPUParticles2D.PARAM_HUE_VARIATION, 1.0)
+		#set_param_randomness(CPUParticles2D.PARAM_HUE_VARIATION, 1.0)
 		$AudioStreamPlayer.play()
 	else:
 		set_amount(64)
 		set_lifetime(0.25)
-		set_param(ParticlesMaterial.PARAM_HUE_VARIATION, 0.0)
-		set_param_randomness(ParticlesMaterial.PARAM_HUE_VARIATION, 0.0)
+		set_param_max(CPUParticles2D.PARAM_HUE_VARIATION, 0.0)
+		#set_param_randomness(CPUParticles2D.PARAM_HUE_VARIATION, 0.0)
 	set_emitting(true)
 	$Timer.start(get_lifetime())
 

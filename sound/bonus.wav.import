@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bonus.wav-23b7917f678998116a3d08ab0580f26d.sample"
+type="AudioStreamWAV"
+uid="uid://due1ec88n3vvx"
+path="res://.godot/imported/bonus.wav-23b7917f678998116a3d08ab0580f26d.sample"
 
 [deps]
 
 source_file="res://sound/bonus.wav"
-dest_files=[ "res://.import/bonus.wav-23b7917f678998116a3d08ab0580f26d.sample" ]
+dest_files=["res://.godot/imported/bonus.wav-23b7917f678998116a3d08ab0580f26d.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shock.wav-9071d2eff361fa0dc4074af3da7723cc.sample"
+type="AudioStreamWAV"
+uid="uid://2jkbf0qyyhpo"
+path="res://.godot/imported/shock.wav-9071d2eff361fa0dc4074af3da7723cc.sample"
 
 [deps]
 
 source_file="res://sound/shock.wav"
-dest_files=[ "res://.import/shock.wav-9071d2eff361fa0dc4074af3da7723cc.sample" ]
+dest_files=["res://.godot/imported/shock.wav-9071d2eff361fa0dc4074af3da7723cc.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

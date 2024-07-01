@@ -66,12 +66,12 @@ func are_all_gates_raised():
 
 # Make the toy's light flash.
 func flash(flash_time = 0.3, first_time = 0.0):
-	$Light.flash(flash_time, first_time)
+	$Light3D.flash(flash_time, first_time)
 
 # Make the toy's light flash a few times, then switch off.
 func flash_off():
-	$Light.flash_off()
+	$Light3D.flash_off()
 
 # Just switch off the toy's light.
 func switch_off():
-	$Light.switch_off()
+	$Light3D.switch_off()

@@ -1,6 +1,6 @@
 # This code manages the instruction card.
 
-extends Sprite
+extends Sprite2D
 
 const INVISIBLE_X = -448
 const VISIBLE_X = 448

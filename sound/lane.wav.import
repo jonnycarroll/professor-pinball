@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/lane.wav-d823d54244be85907267ff063161ae33.sample"
+type="AudioStreamWAV"
+uid="uid://c5i6nedsvwoo6"
+path="res://.godot/imported/lane.wav-d823d54244be85907267ff063161ae33.sample"
 
 [deps]
 
 source_file="res://sound/lane.wav"
-dest_files=[ "res://.import/lane.wav-d823d54244be85907267ff063161ae33.sample" ]
+dest_files=["res://.godot/imported/lane.wav-d823d54244be85907267ff063161ae33.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

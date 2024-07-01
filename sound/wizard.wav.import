@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/wizard.wav-9b7becea3e6bd541a10e455b62fcede0.sample"
+type="AudioStreamWAV"
+uid="uid://cljbfdio16bhr"
+path="res://.godot/imported/wizard.wav-9b7becea3e6bd541a10e455b62fcede0.sample"
 
 [deps]
 
 source_file="res://sound/wizard.wav"
-dest_files=[ "res://.import/wizard.wav-9b7becea3e6bd541a10e455b62fcede0.sample" ]
+dest_files=["res://.godot/imported/wizard.wav-9b7becea3e6bd541a10e455b62fcede0.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

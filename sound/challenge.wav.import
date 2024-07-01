@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/challenge.wav-2adae910dee001786c75dd4ae410e11a.sample"
+type="AudioStreamWAV"
+uid="uid://b3s3lrjryuqpo"
+path="res://.godot/imported/challenge.wav-2adae910dee001786c75dd4ae410e11a.sample"
 
 [deps]
 
 source_file="res://sound/challenge.wav"
-dest_files=[ "res://.import/challenge.wav-2adae910dee001786c75dd4ae410e11a.sample" ]
+dest_files=["res://.godot/imported/challenge.wav-2adae910dee001786c75dd4ae410e11a.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

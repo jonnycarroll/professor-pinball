@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://jx058mso3aui"]
 
-[ext_resource path="res://graphics/needle.png" type="Texture" id=1]
-[ext_resource path="res://Needle.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://d3s7vv5gw2kmy" path="res://graphics/needle.png" id="1"]
+[ext_resource type="Script" path="res://Needle.gd" id="2"]
 
-[node name="Needle" type="Sprite"]
-pause_mode = 1
-texture = ExtResource( 1 )
-offset = Vector2( -46, 0 )
-script = ExtResource( 2 )
+[node name="Needle" type="Sprite2D"]
+process_mode = 1
+texture = ExtResource("1")
+offset = Vector2(-46, 0)
+script = ExtResource("2")

@@ -104,16 +104,19 @@ func _ready():
 	
 	# The game starts at a low resolution so the splash screen will look correct.
 	# These lines set us to the correct higher resolution.
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, WINDOW_SIZE)
-	OS.set_window_fullscreen(true)
+	get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+	get_tree().root.content_scale_size = WINDOW_SIZE
+	#get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (true) else Window.MODE_WINDOWED
+	get_window().mode = Window.MODE_WINDOWED
 	
 	# Read the high score file, or set up a new file.
-	var high_score_file = File.new()
-	if high_score_file.file_exists(HIGH_SCORE_FILE):
-		high_score_file.open(HIGH_SCORE_FILE, File.READ)
+	var high_score_file
+	if FileAccess.file_exists(HIGH_SCORE_FILE):
+		high_score_file = FileAccess.open(HIGH_SCORE_FILE, FileAccess.READ)
 		high_score = high_score_file.get_64()
 	else:
-		high_score_file.open(HIGH_SCORE_FILE, File.WRITE)
+		high_score_file = FileAccess.open(HIGH_SCORE_FILE, FileAccess.WRITE)
 		high_score_file.store_64(0)
 		high_score = 0
 	high_score_file.close()
@@ -172,9 +175,9 @@ The W key marks all events as complete.
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed:
-			if event.scancode == KEY_E:
+			if event.keycode == KEY_E:
 				change_special()
-			if event.scancode == KEY_W:
+			if event.keycode == KEY_W:
 				lane_hunter_victory = true
 				target_hunter_victory = true
 				multiball_victory = true
@@ -216,9 +219,9 @@ func attract(startup = false):
 	$X4Light.flash(3.0, 2.0)
 	$X8Light.flash(3.0)
 	$SaveLight.flash(3.0)
-	$Bumper1.get_node("Light").flash(3.0, 1.0)
-	$Bumper2.get_node("Light").flash(3.0, 2.0)
-	$Bumper3.get_node("Light").flash(3.0)
+	$Bumper1.get_node("Light3D").flash(3.0, 1.0)
+	$Bumper2.get_node("Light3D").flash(3.0, 2.0)
+	$Bumper3.get_node("Light3D").flash(3.0)
 	$LeftKickerLight.flash(3.0, 1.5)
 	$RightKickerLight.flash(3.0)
 	$SkillLight1.flash(3.0, 1.0)
@@ -264,7 +267,7 @@ func new_game():
 
 # Create a particle effect when the ball hits something interesting.
 func impact(ball, color):
-	var new_impact = impact_scene.instance()
+	var new_impact = impact_scene.instantiate()
 	new_impact.set_global_position(ball.get_global_position())
 	new_impact.setup(color, mode == MODE_WIZARD)
 	call_deferred("add_child", new_impact)
@@ -353,6 +356,7 @@ func nudge_right(first_impulse = true):
 
 # Put a new ball in play.
 func new_ball(eject = false):
+	eject = true
 	if mode != MODE_MULTIBALL:
 		$DMD.show_and_keep($DMD.DISPLAY_SCORE)
 		if save_next_ball:
@@ -362,7 +366,7 @@ func new_ball(eject = false):
 			$SaveLight.switch_on()
 			$BallSaveTimer.start()
 	# Put the ball on the table.
-	var new_ball = ball_scene.instance()
+	var new_ball = ball_scene.instantiate()
 	new_ball.set_global_position(BALL_ENTRY)
 	if eject:
 		# Sometimes we want to eject the ball automatically.
@@ -639,9 +643,9 @@ func clear_all_lights():
 	$RightTargetLight.switch_off()
 	$SaveLight.switch_off()
 	$Toy.switch_off()
-	$Bumper1.get_node("Light").switch_off()
-	$Bumper2.get_node("Light").switch_off()
-	$Bumper3.get_node("Light").switch_off()
+	$Bumper1.get_node("Light3D").switch_off()
+	$Bumper2.get_node("Light3D").switch_off()
+	$Bumper3.get_node("Light3D").switch_off()
 	$LeftKickerLight.switch_off()
 	$RightKickerLight.switch_off()
 	$SkillLight1.switch_off()
@@ -694,8 +698,9 @@ func game_over():
 			# After showing the game over message, show the new high score if appropriate.
 			if score > high_score:
 				high_score = score
-				var high_score_file = File.new()
-				high_score_file.open(HIGH_SCORE_FILE, File.WRITE_READ)
+				#var high_score_file = File.new()
+				#high_score_file.open(HIGH_SCORE_FILE, File.WRITE_READ)
+				var high_score_file = FileAccess.open(HIGH_SCORE_FILE, FileAccess.WRITE_READ)
 				high_score_file.store_64(high_score)
 				high_score_file.close()
 				$DMD.set_parameter("high_score", high_score)
@@ -842,15 +847,15 @@ func _on_BallCaptureRight_rollover_entered(body):
 
 # The following three functions react to hits against the three bumpers.
 func _on_Bumper1_body_entered(body):
-	$Bumper1.get_node("Light").flash_once()
+	$Bumper1.get_node("Light3D").flash_once()
 	bump(body, $Bumper1, FORCE_BUMPER)
 
 func _on_Bumper2_body_entered(body):
-	$Bumper2.get_node("Light").flash_once()
+	$Bumper2.get_node("Light3D").flash_once()
 	bump(body, $Bumper2, FORCE_BUMPER)
 
 func _on_Bumper3_body_entered(body):
-	$Bumper3.get_node("Light").flash_once()
+	$Bumper3.get_node("Light3D").flash_once()
 	bump(body, $Bumper3, FORCE_BUMPER)
 
 # The following three functions react to hits against the left drop targets.
@@ -1012,7 +1017,7 @@ func _on_Lane5Rollover_rollover_entered(body):
 
 # When this timer expires, release the ball from the capture lane.
 func _on_BallReleaseRightTimer_timeout():
-	var new_ball = ball_scene.instance()
+	var new_ball = ball_scene.instantiate()
 	new_ball.set_global_position($BallCaptureRight.get_global_position())
 	new_ball.set_linear_velocity(Vector2.DOWN.rotated($BallCaptureRight.get_rotation()) * RELEASE_FORCE)
 	call_deferred("add_child", new_ball)
@@ -1113,7 +1118,7 @@ func _on_WizardReadyTimer_timeout():
 		$DMD.show_once($DMD.DISPLAY_WIZARD_READY)
 
 func _on_ZapTimer_timeout():
-	var new_zap = zap_scene.instance()
+	var new_zap = zap_scene.instantiate()
 	new_zap.set_global_position($Toy.get_global_position())
 	call_deferred("add_child", new_zap)
 	$ZapTimer.start(rng.randf_range(0.1, 0.75))

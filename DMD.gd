@@ -168,56 +168,56 @@ var paused = false
 # thought, and it works. We're mapping characters to specific positions
 # within the font bitmap.
 func _ready():
-	font = BitmapFont.new()
-	font.add_texture(font_texture)
-	font.set_height(12)
-	
-	font.add_char(KEY_A, 0, Rect2(0, 0, 8, 12))
-	font.add_char(KEY_B, 0, Rect2(8, 0, 8, 12))
-	font.add_char(KEY_C, 0, Rect2(16, 0, 8, 12))
-	font.add_char(KEY_D, 0, Rect2(24, 0, 8, 12))
-	font.add_char(KEY_E, 0, Rect2(32, 0, 8, 12))
-	font.add_char(KEY_F, 0, Rect2(40, 0, 8, 12))
-	font.add_char(KEY_G, 0, Rect2(48, 0, 8, 12))
-	
-	font.add_char(KEY_H, 0, Rect2(0, 12, 8, 12))
-	font.add_char(KEY_I, 0, Rect2(8, 12, 8, 12))
-	font.add_char(KEY_J, 0, Rect2(16, 12, 8, 12))
-	font.add_char(KEY_K, 0, Rect2(24, 12, 8, 12))
-	font.add_char(KEY_L, 0, Rect2(32, 12, 8, 12))
-	font.add_char(KEY_M, 0, Rect2(40, 12, 8, 12))
-	font.add_char(KEY_N, 0, Rect2(48, 12, 8, 12))
-
-	font.add_char(KEY_O, 0, Rect2(0, 24, 8, 12))
-	font.add_char(KEY_P, 0, Rect2(8, 24, 8, 12))
-	font.add_char(KEY_Q, 0, Rect2(16, 24, 8, 12))
-	font.add_char(KEY_R, 0, Rect2(24, 24, 8, 12))
-	font.add_char(KEY_S, 0, Rect2(32, 24, 8, 12))
-	font.add_char(KEY_T, 0, Rect2(40, 24, 8, 12))
-	font.add_char(KEY_U, 0, Rect2(48, 24, 8, 12))
-
-	font.add_char(KEY_V, 0, Rect2(0, 36, 8, 12))
-	font.add_char(KEY_W, 0, Rect2(8, 36, 8, 12))
-	font.add_char(KEY_X, 0, Rect2(16, 36, 8, 12))
-	font.add_char(KEY_Y, 0, Rect2(24, 36, 8, 12))
-	font.add_char(KEY_Z, 0, Rect2(32, 36, 8, 12))
-	font.add_char(KEY_0, 0, Rect2(40, 36, 8, 12))
-	font.add_char(KEY_1, 0, Rect2(48, 36, 8, 12))
-
-	font.add_char(KEY_2, 0, Rect2(0, 48, 8, 12))
-	font.add_char(KEY_3, 0, Rect2(8, 48, 8, 12))
-	font.add_char(KEY_4, 0, Rect2(16, 48, 8, 12))
-	font.add_char(KEY_5, 0, Rect2(24, 48, 8, 12))
-	font.add_char(KEY_6, 0, Rect2(32, 48, 8, 12))
-	font.add_char(KEY_7, 0, Rect2(40, 48, 8, 12))
-	font.add_char(KEY_8, 0, Rect2(48, 48, 8, 12))
-
-	font.add_char(KEY_9, 0, Rect2(0, 60, 8, 12))
-	font.add_char(KEY_COMMA, 0, Rect2(8, 60, 8, 12))
-	font.add_char(KEY_COLON, 0, Rect2(16, 60, 8, 12))
-	font.add_char(KEY_EXCLAM, 0, Rect2(24, 60, 8, 12))
-	
-	font.add_char(KEY_SPACE, 0, Rect2(48, 72, 8, 12))
+	font = FontFile.new()
+	font.load_bitmap_font(font_texture.resource_path)
+	#font.set_height(12) # FIXME
+#
+#	font.add_char(KEY_A, 0, Rect2(0, 0, 8, 12))
+#	font.add_char(KEY_B, 0, Rect2(8, 0, 8, 12))
+#	font.add_char(KEY_C, 0, Rect2(16, 0, 8, 12))
+#	font.add_char(KEY_D, 0, Rect2(24, 0, 8, 12))
+#	font.add_char(KEY_E, 0, Rect2(32, 0, 8, 12))
+#	font.add_char(KEY_F, 0, Rect2(40, 0, 8, 12))
+#	font.add_char(KEY_G, 0, Rect2(48, 0, 8, 12))
+#
+#	font.add_char(KEY_H, 0, Rect2(0, 12, 8, 12))
+#	font.add_char(KEY_I, 0, Rect2(8, 12, 8, 12))
+#	font.add_char(KEY_J, 0, Rect2(16, 12, 8, 12))
+#	font.add_char(KEY_K, 0, Rect2(24, 12, 8, 12))
+#	font.add_char(KEY_L, 0, Rect2(32, 12, 8, 12))
+#	font.add_char(KEY_M, 0, Rect2(40, 12, 8, 12))
+#	font.add_char(KEY_N, 0, Rect2(48, 12, 8, 12))
+#
+#	font.add_char(KEY_O, 0, Rect2(0, 24, 8, 12))
+#	font.add_char(KEY_P, 0, Rect2(8, 24, 8, 12))
+#	font.add_char(KEY_Q, 0, Rect2(16, 24, 8, 12))
+#	font.add_char(KEY_R, 0, Rect2(24, 24, 8, 12))
+#	font.add_char(KEY_S, 0, Rect2(32, 24, 8, 12))
+#	font.add_char(KEY_T, 0, Rect2(40, 24, 8, 12))
+#	font.add_char(KEY_U, 0, Rect2(48, 24, 8, 12))
+#
+#	font.add_char(KEY_V, 0, Rect2(0, 36, 8, 12))
+#	font.add_char(KEY_W, 0, Rect2(8, 36, 8, 12))
+#	font.add_char(KEY_X, 0, Rect2(16, 36, 8, 12))
+#	font.add_char(KEY_Y, 0, Rect2(24, 36, 8, 12))
+#	font.add_char(KEY_Z, 0, Rect2(32, 36, 8, 12))
+#	font.add_char(KEY_0, 0, Rect2(40, 36, 8, 12))
+#	font.add_char(KEY_1, 0, Rect2(48, 36, 8, 12))
+#
+#	font.add_char(KEY_2, 0, Rect2(0, 48, 8, 12))
+#	font.add_char(KEY_3, 0, Rect2(8, 48, 8, 12))
+#	font.add_char(KEY_4, 0, Rect2(16, 48, 8, 12))
+#	font.add_char(KEY_5, 0, Rect2(24, 48, 8, 12))
+#	font.add_char(KEY_6, 0, Rect2(32, 48, 8, 12))
+#	font.add_char(KEY_7, 0, Rect2(40, 48, 8, 12))
+#	font.add_char(KEY_8, 0, Rect2(48, 48, 8, 12))
+#
+#	font.add_char(KEY_9, 0, Rect2(0, 60, 8, 12))
+#	font.add_char(KEY_COMMA, 0, Rect2(8, 60, 8, 12))
+#	font.add_char(KEY_COLON, 0, Rect2(16, 60, 8, 12))
+#	font.add_char(KEY_EXCLAM, 0, Rect2(24, 60, 8, 12))
+#
+#	font.add_char(KEY_SPACE, 0, Rect2(48, 72, 8, 12))
 
 func _draw():
 	draw_rect(DMD_RECT, BLANK_COLOR, true)
@@ -237,7 +237,7 @@ func _draw():
 # Set the pause mode for the display.
 func set_paused(is_paused):
 	paused = is_paused
-	update()
+	queue_redraw()
 
 # For a given string, determine the leftmost X coordinate.
 func get_starting_x(text):
@@ -247,13 +247,13 @@ func get_starting_x(text):
 func set_upper_text(new_text):
 	upper_text = new_text
 	upper_draw.x = get_starting_x(upper_text)
-	update()
+	queue_redraw()
 
 # Set the text for the bottom line of the display.
 func set_lower_text(new_text):
 	lower_text = new_text
 	lower_draw.x = get_starting_x(lower_text)
-	update()
+	queue_redraw()
 
 # Some text messages include parameters, such as score or ball number.
 func set_parameter(param_name, param_value):
@@ -328,7 +328,7 @@ func show_something(display_number, and_keep = false):
 		# If we're showing a bitmap, figure out where it is in the texture and display it.
 		mode = MODE_GRAPHICS
 		texture_draw.position.y = DMD_HEIGHT * display_number
-		update()
+		queue_redraw()
 	else:
 		# If we're showing text, construct it from strings and display it.
 		mode = MODE_TEXT
